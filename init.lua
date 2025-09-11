@@ -92,8 +92,8 @@ vim.g.maplocalleader = '\\'
 
 vim.keymap.set('n', '<leader>ev', '<cmd>edit $MYVIMRC<cr>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>sv', '<cmd>source $MYVIMRC<cr>', { noremap = true, silent = true })
-vim.keymap.set('n', '<c-x>d', '<cmd>Explore<cr>', { noremap = true, silent = true })
-vim.keymap.set('n', '<c-x>D', '<cmd>exe "Explore" getcwd()<cr>', { noremap = true, silent = true })
+vim.keymap.set('n', '<c-x>d', '<cmd>Explore<cr>', { noremap = true, desc = 'Go to DIR of Current File' })
+vim.keymap.set('n', '<c-x>D', '<cmd>exe "Explore" getcwd()<cr>', { noremap = true, desc = 'Go to DIR of Current Project' })
 
 -- ================================================================================
 -- 滚快点
@@ -467,16 +467,18 @@ require('lazy').setup({
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
-      vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
-      vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-      vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
-      vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
-      vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-      vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
-      vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
-      vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
-      vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-      vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+      vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = 'Telescope help tags' })
+      vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = 'Telescope keymaps' })
+      vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = 'Telescope builtin' })
+      vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = 'Telescope search current word' })
+      vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = 'Telescope live grep' })
+      vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = 'Telescope search diagnostics' })
+      vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = 'Telescope resume' })
+      vim.keymap.set('n', '<leader>bb', builtin.buffers, { desc = 'Telescope buffers' })
+      vim.keymap.set('n', '<C-x><C-r>', builtin.oldfiles, { desc = 'Telescope search recent files' })
+      vim.keymap.set('n', '<C-x><C-f>', builtin.find_files, { desc = 'Telescope find files' })
+      vim.keymap.set('n', '<M-g>i', builtin.lsp_document_symbols, { desc = 'Telescope document symbols' })
+      vim.keymap.set('n', '<M-g>I', builtin.lsp_workspace_symbols, { desc = 'Telescope workspace symbols' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
